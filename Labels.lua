@@ -60,13 +60,13 @@ labels_format_version 	= 1 -- labels format vesrion
 font_properties =  {"DejaVuLGCSans.ttf", 6, 0, 0, 1}
 
 local aircraft_symbol_near  =  "•" --U+02C4
-local aircraft_symbol_far   =  "•" --U+02C4
+local aircraft_symbol_far   =  "·" --U+02C4
 
 local ground_symbol_near    = "•"  --U+02C9
-local ground_symbol_far     = "•"  --U+02C9
+local ground_symbol_far     = "·"  --U+02C9
 
 local navy_symbol_near      = "•"  --U+02DC
-local navy_symbol_far       = "•"  --U+02DC
+local navy_symbol_far       = "·"  --U+02DC
 
 local weapon_symbol_near    = "·"  --U+02C8
 local weapon_symbol_far     = "·"  --U+02C8
@@ -93,45 +93,52 @@ if 		IS_DOT then
 AirFormat = {
 --[distance]		= {format, alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
 [5000]	= EMPTY,
-[10000]	= {aircraft_symbol_near	, "CenterCenter"	,0	, 0.7	, 0	, 1},
-[20000]	= {aircraft_symbol_far 	, "CenterCenter"	,0	, 0.6	, 0	, 1},
-[30000]	= {aircraft_symbol_far 	, "CenterCenter"	,0	, 0.5	, 0	, 1},
-[40000]	= {aircraft_symbol_far 	, "CenterCenter"	,0	, 0.4	, 0	, 1},
-[50000]	= {aircraft_symbol_far 	, "CenterCenter"	,0	, 0.3	, 0	, 1},
+[10000]	= {aircraft_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[15000]	= {aircraft_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[20000]	= {aircraft_symbol_near , "CenterCenter"	,0.3	, 1	, 0	, 1},
+[25000]	= {aircraft_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
+[30000]	= {aircraft_symbol_near , "CenterCenter"	,0.5	, 1	, 0	, 1},
+[35000]	= {aircraft_symbol_far 	, "CenterCenter"	,0.4	, 1	, 0	, 1},
+[40000]	= {aircraft_symbol_far 	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[45000]	= {aircraft_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[50000]	= {aircraft_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[80000]	= {aircraft_symbol_far 	, "CenterCenter"	,0.05	, 1	, 0	, 1},
 
 }
 
 GroundFormat = {
 --[distance]		= {format , alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
 [5000]	= EMPTY,
-[10000]	= {ground_symbol_near	, "CenterCenter"	,0	, 0.7	, 0	, 1},
-[20000]	= {ground_symbol_far 	, "CenterCenter"	,0	, 0.6	, 0	, 1},
-[30000]	= {ground_symbol_far 	, "CenterCenter"	,0	, 0.5	, 0	, 1},
-[40000]	= {ground_symbol_far 	, "CenterCenter"	,0	, 0.4	, 0	, 1},
-[50000]	= {ground_symbol_far 	, "CenterCenter"	,0	, 0.3	, 0	, 1},
+[6000]	= {ground_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[7500]	= {ground_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[10000]	= {ground_symbol_near	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[20000]	= {ground_symbol_near 	, "CenterCenter"	,0.4	, 1	, 0	, 1},
+[30000]	= {ground_symbol_far 	, "CenterCenter"	,0.5	, 1	, 0	, 1},
+[40000]	= {ground_symbol_far 	, "CenterCenter"	,0.5	, 1	, 0	, 1},
+[50000]	= {ground_symbol_far 	, "CenterCenter"	,0.5	, 1	, 0	, 1},
 }
 
 NavyFormat = {
 --[distance]		= {format, alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
 [5000]	= EMPTY,
-[10000]	= {navy_symbol_near	, "CenterCenter"	,0	, 0.7	, 0	, 1},
-[20000]	= {navy_symbol_far 	, "CenterCenter"	,0	, 0.6	, 0	, 1},
-[30000]	= {navy_symbol_far 	, "CenterCenter"	,0	, 0.5	, 0	, 1},
-[40000]	= {navy_symbol_far 	, "CenterCenter"	,0	, 0.4	, 0	, 1},
-[50000]	= {navy_symbol_far 	, "CenterCenter"	,0	, 0.3	, 0	, 1},
+[10000]	= {navy_symbol_near	, "CenterCenter"	,0.5	, 1	, 0	, 1},
+[20000]	= {navy_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
+[30000]	= {navy_symbol_far 	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[40000]	= {navy_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[50000]	= {navy_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
 }
 
 WeaponFormat = {
 --[distance]		= {format ,alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
-[5000]	= EMPTY,
-[10000]	= {weapon_symbol_near	,"CenterCenter"	    ,0	, 0.5	, 0	, 1},
-[20000]	= {weapon_symbol_far 	, "CenterCenter"	,0	, 0.4	, 0	, 1},
-[30000]	= {weapon_symbol_far 	, "CenterCenter"	,0	, 0.3	, 0	, 1},
-[40000]	= {weapon_symbol_far 	, "CenterCenter"	,0	, 0.2	, 0	, 1},
-[50000]	= {weapon_symbol_far 	, "CenterCenter"	,0	, 0.1	, 0	, 1},
+[5000]	= {weapon_symbol_near	,"CenterCenter"	    ,0.5	, 1	, 0	, 1},
+[10000]	= {weapon_symbol_near	,"CenterCenter"	    ,0.4	, 1	, 0	, 1},
+[20000]	= {weapon_symbol_near 	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[30000]	= {weapon_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[40000]	= {weapon_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[50000]	= {weapon_symbol_far 	, "CenterCenter"	,0.05	, 1	, 0	, 1},
 }
 
-elseif IS_ABBREVIATED then 
+elseif IS_ABBREVIATED then
 
 AirFormat = {
 --[distance]		= {format, alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
@@ -166,7 +173,7 @@ WeaponFormat = {
 [20000]	= {weapon_symbol_far					,"LeftBottom"	,0.25	, 0.25	, -3	, 0},
 }
 
-else 
+else
 
 AirFormat = {
 --[distance]		= {format, alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
@@ -203,7 +210,7 @@ WeaponFormat = {
 
 end
 
-PointFormat = { 
+PointFormat = {
 [1e10]	= {"%N%n%D", "LeftBottom"},
 }
 
@@ -212,7 +219,7 @@ PointFormat = {
 
 ColorAliesSide   = {30, 30, 30}
 ColorEnemiesSide = {30, 30, 30}
-ColorUnknown     = {30, 30, 30} -- will be blend at distance with coalition color
+ColorUnknown     = {30, 30, 30, 0} -- will be blend at distance with coalition color
 
 
 
