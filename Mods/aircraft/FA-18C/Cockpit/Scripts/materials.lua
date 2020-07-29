@@ -20,8 +20,7 @@ dofile(LockOn_Options.script_path.."fonts.lua")
 
 -- Only green colors are described here. Red and yellow will be set via dedicated controllers
 local MDG_materials = {}
-MDG_materials[MDG_SELF_IDS.HUD] 	= {2, 255, 20, 385}
---MDG_materials[MDG_SELF_IDS.HUD] 	= {5, 255, 76, 400}
+MDG_materials[MDG_SELF_IDS.HUD] 	= {2, 255, 20, 255}
 -- {94, 202, 0, 255} -- MDI original
 -- {57, 224, 32, 255} -- MDI test
 -- {69, 224, 45, 255} -- MDI test 2
@@ -46,11 +45,7 @@ materials["INDICATION_COMMON_WHITE"]	= {255, 255, 255, 255}
 materials["INDICATION_COMMON_GREEN"]	= {0, 255, 0, 255}
 materials["INDICATION_COMMON_AMBER"]	= {255,161,45,255}
 materials["MASK_MATERIAL_PURPLE"]		= {255, 0, 255, 30}
-materials["MASK_MATERIAL_PURPLE_2"]		= {255, 0, 255, 100}
 materials["MASK_MATERIAL_2"]			= {0, 255, 255, 30}
-
-materials["TGP_STBY_BLACK"] 		= {0, 0, 0, 255}
-materials["TGP_STBY_DGRAY"] 		= {5, 5, 5, 255}
 
 materials["DBG_GREY"]					= {25, 25, 25, 255}
 materials["DBG_BLACK"]					= {0, 0, 0, 100}
@@ -83,7 +78,7 @@ textures = {}
 
 local ResourcesPath = LockOn_Options.script_path.."../IndicationResources/"
 
-textures["ARCADE"]							= {"arcade.tga",	materials["INDICATION_COMMON_RED"]}		-- Control Indicator
+textures["ARCADE"]							= {"arcade.tga",	materials["INDICATION_COMMON_GREEN"]}		-- Control Indicator
 textures["ARCADE_WHITE"]					= {"arcade.tga",	materials["SIMPLE_WHITE"]}				-- Control Indicator
 textures["IFEI_INDICATIONS"]				= {ResourcesPath.."IFEI/IFEI_Fixed_Symbology.dds", materials["IFEI_FONT"]}				-- Control Indicator
 -- DBG
@@ -91,7 +86,6 @@ textures["IFEI_INDICATIONS"]				= {ResourcesPath.."IFEI/IFEI_Fixed_Symbology.dds
 
 textures["INDICATION_RWR"]					= {ResourcesPath.."RWR/indication_RWR.tga", materials["INDICATION_COMMON_GREEN"]}
 textures["INDICATION_RWR_LINE"]				= {"arcade.tga",							materials["INDICATION_COMMON_GREEN"]}
-textures["INDICATION_TGP"]					= {ResourcesPath.."MDG/tgp_texture.tga",	materials["INDICATION_COMMON_WHITE"]}
 
 
 -------FONTS----------
@@ -120,9 +114,3 @@ fonts["HMD_FONT_MATERIAL"]				= {fontdescription["font_stroke_HMD"], 10, materia
 symbologyPaths = {LockOn_Options.script_path.."../IndicationResources/MDG",
 					LockOn_Options.script_path.."../IndicationResources/RWR",
 					LockOn_Options.script_path.."../IndicationResources/HMD"}
-
--- BAKE MATERIALS
-HUD_BAKE_MATERIAL 		= "HUD_Bake"
-LMDI_BAKE_MATERIAL 		= "LMDI_Bake"
-RMDI_BAKE_MATERIAL		= "RMDI_Bake"
-AMPCD_BAKE_MATERIAL		= "AMPCD_Bake"
