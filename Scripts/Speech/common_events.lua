@@ -212,12 +212,8 @@ events = {
 			[Message.wMsgWingmenHelReconEndNotFound] = { _('recce complete no targets'), 'recce complete no targets' },
 			[Message.wMsgWingmenHelLaunchAbortTask] = { _('under attack and aborting recce'), 'under attack and aborting recce' },
 				--Contacts
-				[Message.wMsgWingmenRadarContact] = { _('contact bearing'), 'contact bearing' },
-				[Message.wMsgWingmenContact] = { _('contact'), 'contact' },
 				[Message.wMsgWingmenTallyBandit] = { _('tally bandit'), 'tally bandit' },
-				[Message.wMsgWingmenNails] = { _('NAILS'), 'NAILS' },
-				[Message.wMsgWingmenSpike] = { _('SPIKE'), 'SPIKE' },
-				[Message.wMsgWingmenMudSpike] = { _('MUD SPIKE'), 'MUD SPIKE' },
+
 			--Events
 			[Message.wMsgWingmenIamHit] = { _('I\'m hit!'), 'I am hit' },
 			[Message.wMsgWingmenIveTakenDamage] =  { _('I\'m hit!'), 'I am hit' },
