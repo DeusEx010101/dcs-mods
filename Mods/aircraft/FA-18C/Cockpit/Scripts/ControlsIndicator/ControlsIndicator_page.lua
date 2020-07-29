@@ -38,7 +38,7 @@ local pitch_stick_movement_negative = 0.76 * roll_stick_movement * 0.375 * k
 local ds				= 0.05 * size_x
 local rud_shift			= 2*0.1*size_x
 local rud_base_shift	= rud_shift --0.05*size_x
-local orange_mat		= MakeMaterial("", {255, 100, 0, 50})
+local orange_mat		= MakeMaterial("", {8, 8, 8, 130})
 local rudder_shift		= 0.1*size_x
 
 -- BASE -----------------------------------------------------------------------
@@ -66,7 +66,7 @@ pitch_scale.vertices		= {	{-size_y_negative,	-line_width},
 								{size_y_positive,	line_width},
 								{size_y_positive,	-line_width}}
 pitch_scale.indices			= default_box_indices
-pitch_scale.material		= "ARCADE"
+pitch_scale.material		= "ARCADE_WHITE"
 pitch_scale.init_rot		= {90,0,0}
 pitch_scale.tex_params		= {256/512,176.5/512,0.5*tex_scale,2*tex_scale}
 pitch_scale.parent_element	= base.name
@@ -79,7 +79,7 @@ roll_scale.vertices			= {	{-size_x,	-line_width},
 								{size_x,	line_width},
 								{size_x,	-line_width}}
 roll_scale.indices			= default_box_indices
-roll_scale.material			= "ARCADE"
+roll_scale.material			= "ARCADE_WHITE"
 roll_scale.tex_params		= {256/512, 176.5/512, tex_scale, 2*tex_scale}
 roll_scale.parent_element	= base.name
 AddElement(roll_scale)
@@ -94,7 +94,7 @@ stick_position.vertices		= {	{-stick_index_size, -stick_index_size},
 								{ stick_index_size,  stick_index_size},
 								{ stick_index_size, -stick_index_size}}
 stick_position.indices		= default_box_indices
-stick_position.material		= "ARCADE"
+stick_position.material		= "ARCADE_WHITE"
 stick_position.tex_params	= {330/512, 365.5 / 512, 2*tex_scale, 2*tex_scale/0.8}
 stick_position.controllers	= {	{"stick_pitch",	size_y_negative},
 								{"stick_roll",	size_x}}
@@ -109,7 +109,7 @@ trimmer_position.vertices		= {	{-stick_index_size, -stick_index_size},
 								{ stick_index_size,  stick_index_size},
 								{ stick_index_size, -stick_index_size}}
 trimmer_position.indices		= default_box_indices
-trimmer_position.material		= "ARCADE"
+trimmer_position.material		= "ARCADE_WHITE"
 trimmer_position.tex_params	= {330/512, 365.5 / 512, 2*tex_scale, 2*tex_scale/0.8}
 trimmer_position.controllers	= {	{"trimmer_stick_pitch",	size_y_negative},
 									{"trimmer_stick_roll",	size_x},
@@ -132,7 +132,7 @@ fcc_trim_hor.vertices		= {	{-rud_shift*0.5,	-line_width},
 								{rud_shift*0.5,	line_width},
 								{rud_shift*0.5,	-line_width}}
 fcc_trim_hor.indices		= default_box_indices
-fcc_trim_hor.material		= "ARCADE"
+fcc_trim_hor.material		= "ARCADE_WHITE"
 fcc_trim_hor.tex_params		= {256/512, 176.5/512, tex_scale, 2*tex_scale}
 fcc_trim_hor.parent_element	= fcc_trim_base.name
 AddElement(fcc_trim_hor)
@@ -251,7 +251,7 @@ for i = 1,2 do
 										  {0 ,sz_wheel_brake},
 										  { -signum[i] * 0.3 * sz_wheel_brake,sz_wheel_brake}}
 			wheel_brake.indices		   = {0,1,2}
-			wheel_brake.material	   = "ARCADE"
+			wheel_brake.material	   = "ARCADE_WHITE"
 			wheel_brake.init_pos       =  wheel_brake_mask.init_pos
 			wheel_brake.parent_element  = base.name
 			wheel_brake.h_clip_relation = h_clip_relations.COMPARE
