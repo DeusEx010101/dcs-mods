@@ -57,19 +57,23 @@ labels_format_version 	= 1 -- labels format vesrion
 -- text_blur_type = 0 - none
 -- text_blur_type = 1 - 3x3 pixels
 -- text_blur_type = 2 - 5x5 pixels
-font_properties =  {"DejaVuLGCSans.ttf", 6, 0, 0, 1}
+font_properties =  {"DejaVuLGCSans.ttf", 6, 0, 0, 0}
 
-local aircraft_symbol_near  =  "•" --U+02C4
-local aircraft_symbol_far   =  "·" --U+02C4
+local aircraft_symbol_near  = "•" --U+02C4
+local aircraft_symbol_far   = "∙" --U+02C4
 
 local ground_symbol_near    = "•"  --U+02C9
-local ground_symbol_far     = "·"  --U+02C9
+local ground_symbol_far     = "∙"  --U+02C9
 
 local navy_symbol_near      = "•"  --U+02DC
-local navy_symbol_far       = "·"  --U+02DC
+local navy_symbol_far       = "∙"  --U+02DC
 
-local weapon_symbol_near    = "·"  --U+02C8
-local weapon_symbol_far     = "·"  --U+02C8
+local weapon_symbol_near    = "•"  --U+02C8
+local weapon_symbol_far     = "∙"  --U+02C8
+
+local dot_symbol_near    = "•"  --U+02C8
+local dot_symbol_far     = "•"  --U+02C8
+
 
 local function dot_symbol(blending,opacity)
     return {"·","CenterCenter", blending or 1.0 , opacity  or 0.1}
@@ -93,59 +97,66 @@ if 		IS_DOT then
 AirFormat = {
 --[distance]		= {format, alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
 [1000]	= EMPTY,
-[2000]	= {aircraft_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
-[3000]	= {aircraft_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
-[4000]	= {aircraft_symbol_near	, "CenterCenter"	,0.3	, 1	, 0	, 1},
-[5000]	= {aircraft_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
-[6000]	= {aircraft_symbol_near	, "CenterCenter"	,0.5	, 1	, 0	, 1},
-[8000]	= {aircraft_symbol_near	, "CenterCenter"	,0.6	, 1	, 0	, 1},
-[10000]	= {aircraft_symbol_far	, "CenterCenter"	,0.6	, 1	, 0	, 1},
-[15000]	= {aircraft_symbol_far	, "CenterCenter"	,0.5	, 1	, 0	, 1},
-[20000]	= {aircraft_symbol_far  , "CenterCenter"	,0.4	, 1	, 0	, 1},
-[30000]	= {aircraft_symbol_far  , "CenterCenter"	,0.3	, 1	, 0	, 1},
-[40000]	= {aircraft_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
-[50000]	= {aircraft_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[2000]	= {dot_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[2500]	= {dot_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[3000]	= {dot_symbol_near	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[3500]	= {dot_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
+[4000]	= {dot_symbol_near	, "CenterCenter"	,0.5	, 1	, 0	, 1},
+[5000]	= {dot_symbol_near	, "CenterCenter"	,0.6	, 1	, 0	, 1},
+[6000]	= {dot_symbol_near	, "CenterCenter"	,0.7	, 1	, 0	, 1},
+[8000]	= {dot_symbol_near	, "CenterCenter"	,0.8	, 1	, 0	, 1},
+[10000]	= {dot_symbol_near	, "CenterCenter"	,0.9	, 1	, 0	, 1},
+[15000]	= {dot_symbol_far	, "CenterCenter"	,0.8	, 1	, 0	, 1},
+[20000]	= {dot_symbol_far    , "CenterCenter"	,0.6	, 1	, 0	, 1},
+[30000]	= {dot_symbol_far    , "CenterCenter"	,0.4	, 1	, 0	, 1},
+[40000]	= {dot_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[50000]	= {dot_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
 }
 
 GroundFormat = {
 --[distance]		= {format , alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
 [1000]	= EMPTY,
-[2000]	= {ground_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
-[3000]	= {ground_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
-[4000]	= {ground_symbol_near	, "CenterCenter"	,0.3	, 1	, 0	, 1},
-[5000]	= {ground_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
-[6000]	= {ground_symbol_near	, "CenterCenter"	,0.5	, 1	, 0	, 1},
-[8000]	= {ground_symbol_near	, "CenterCenter"	,0.6	, 1	, 0	, 1},
-[10000]	= {ground_symbol_far	, "CenterCenter"	,0.6	, 1	, 0	, 1},
-[15000]	= {ground_symbol_far	, "CenterCenter"	,0.5	, 1	, 0	, 1},
-[20000]	= {ground_symbol_far    , "CenterCenter"	,0.4	, 1	, 0	, 1},
-[30000]	= {ground_symbol_far    , "CenterCenter"	,0.3	, 1	, 0	, 1},
-[40000]	= {ground_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
-[50000]	= {ground_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[2000]	= {dot_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[2500]	= {dot_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[3000]	= {dot_symbol_near	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[3500]	= {dot_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
+[4000]	= {dot_symbol_near	, "CenterCenter"	,0.5	, 1	, 0	, 1},
+[5000]	= {dot_symbol_near	, "CenterCenter"	,0.6	, 1	, 0	, 1},
+[6000]	= {dot_symbol_near	, "CenterCenter"	,0.7	, 1	, 0	, 1},
+[8000]	= {dot_symbol_near	, "CenterCenter"	,0.8	, 1	, 0	, 1},
+[10000]	= {dot_symbol_near	, "CenterCenter"	,0.9	, 1	, 0	, 1},
+[15000]	= {dot_symbol_far	, "CenterCenter"	,0.8	, 1	, 0	, 1},
+[20000]	= {dot_symbol_far    , "CenterCenter"	,0.6	, 1	, 0	, 1},
+[30000]	= {dot_symbol_far    , "CenterCenter"	,0.4	, 1	, 0	, 1},
+[40000]	= {dot_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[50000]	= {dot_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
 }
 
 NavyFormat = {
 --[distance]		= {format, alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
 [1000]	= EMPTY,
-[2000]	= {navy_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
-[3000]	= {navy_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
-[4000]	= {navy_symbol_near	, "CenterCenter"	,0.3	, 1	, 0	, 1},
-[5000]	= {navy_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
-[6000]	= {navy_symbol_near	, "CenterCenter"	,0.5	, 1	, 0	, 1},
-[8000]	= {navy_symbol_near	, "CenterCenter"	,0.6	, 1	, 0	, 1},
-[10000]	= {navy_symbol_far	, "CenterCenter"	,0.6	, 1	, 0	, 1},
-[15000]	= {navy_symbol_far	, "CenterCenter"	,0.5	, 1	, 0	, 1},
-[20000]	= {navy_symbol_far  , "CenterCenter"	,0.4	, 1	, 0	, 1},
-[30000]	= {navy_symbol_far  , "CenterCenter"	,0.3	, 1	, 0	, 1},
-[40000]	= {navy_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
-[50000]	= {navy_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[2000]	= {dot_symbol_near	, "CenterCenter"	,0.1	, 1	, 0	, 1},
+[2500]	= {dot_symbol_near	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[3000]	= {dot_symbol_near	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[3500]	= {dot_symbol_near	, "CenterCenter"	,0.4	, 1	, 0	, 1},
+[4000]	= {dot_symbol_near	, "CenterCenter"	,0.5	, 1	, 0	, 1},
+[5000]	= {dot_symbol_near	, "CenterCenter"	,0.6	, 1	, 0	, 1},
+[6000]	= {dot_symbol_near	, "CenterCenter"	,0.7	, 1	, 0	, 1},
+[8000]	= {dot_symbol_near	, "CenterCenter"	,0.8	, 1	, 0	, 1},
+[10000]	= {dot_symbol_near	, "CenterCenter"	,0.9	, 1	, 0	, 1},
+[15000]	= {dot_symbol_far	, "CenterCenter"	,0.8	, 1	, 0	, 1},
+[20000]	= {dot_symbol_far    , "CenterCenter"	,0.6	, 1	, 0	, 1},
+[30000]	= {dot_symbol_far    , "CenterCenter"	,0.4	, 1	, 0	, 1},
+[40000]	= {dot_symbol_far 	, "CenterCenter"	,0.2	, 1	, 0	, 1},
+[50000]	= {dot_symbol_far 	, "CenterCenter"	,0.1	, 1	, 0	, 1},
 }
 
 WeaponFormat = {
 --[distance]		= {format ,alignment, color_blending_k, opacity, shift_in_pixels_x, shift_in_pixels_y}
-[5000]	= {weapon_symbol_near	,"CenterCenter"	    ,0.1	, 1	, 0	, 1},
-[10000]	= {weapon_symbol_near	,"CenterCenter"	    ,0.2	, 1	, 0	, 1},
-[20000]	= {weapon_symbol_near 	, "CenterCenter"	,0.3	, 1	, 0	, 1},
+[1000]	= EMPTY,
+[5000]	= {weapon_symbol_far	,"CenterCenter"	    ,0.3	, 1	, 0	, 1},
+[10000]	= {weapon_symbol_far	,"CenterCenter"	    ,0.3	, 1	, 0	, 1},
+[20000]	= {weapon_symbol_far 	, "CenterCenter"	,0.3	, 1	, 0	, 1},
 }
 
 elseif IS_ABBREVIATED then 
