@@ -198,6 +198,8 @@ events = {
 			[Message.wMsgLeaderBall] = { _('Ball'), 'ball' },
 			[Message.wMsgLeaderTowerOverhead] = { _(', overhead, angles '), 'OVERHEAD' },			--			//NAVY - CASE I ; Once player is within 3 nm of carrier
 			[Message.wMsgLeaderFlightKissOff] = { _('Kiss Off'), 'Kiss_off' },			--			//NAVY - CASE I ;
+			[Message.wMsgLeaderAirborn] = {empty_string, 'airborn'},			--	//NAVY	- [SIDE NUMBER], airborn
+			[Message.wMsgLeaderPassing2_5Kilo] = {empty_string, 'PASSING_25'},			--	//NAVY	- [SIDE NUMBER], wMsgLeaderPassing2_5Kilo
 		[Message.wMsgLeaderToNavyATCMaximum] = '',
 		
 		--Wingmen
@@ -212,8 +214,12 @@ events = {
 			[Message.wMsgWingmenHelReconEndNotFound] = { _('recce complete no targets'), 'recce complete no targets' },
 			[Message.wMsgWingmenHelLaunchAbortTask] = { _('under attack and aborting recce'), 'under attack and aborting recce' },
 				--Contacts
+				--[Message.wMsgWingmenRadarContact] = { _('contact bearing'), 'contact bearing' },
+				--[Message.wMsgWingmenContact] = { _('contact'), 'contact' },
 				[Message.wMsgWingmenTallyBandit] = { _('tally bandit'), 'tally bandit' },
-
+				--[Message.wMsgWingmenNails] = { _('NAILS'), 'NAILS' },
+				[Message.wMsgWingmenSpike] = { _('SPIKE'), 'SPIKE' },
+				[Message.wMsgWingmenMudSpike] = { _('MUD SPIKE'), 'MUD SPIKE' },
 			--Events
 			[Message.wMsgWingmenIamHit] = { _('I\'m hit!'), 'I am hit' },
 			[Message.wMsgWingmenIveTakenDamage] =  { _('I\'m hit!'), 'I am hit' },
@@ -296,6 +302,9 @@ events = {
 			[Message.wMsgFlightTargetDestroyed] = { _('kill'), 'kill' },
 			[Message.wMsgFlightDefensive] = { _('defending'), 'defending' },
 			[Message.wMsgFlightMemberDown] = { _('mayday, mayday, mayday, member down!'), 'member down', 'mayday, mayday, mayday, member down!' },
+			[Message.wMsgFlightAerobaticTurnPreStart]	= '',
+			[Message.wMsgFlightAerobaticTurnStart]		= { _('start!'), 'start' },
+			[Message.wMsgFlightAerobaticTurnStop]		= { _('break turn!'), 'break turn' },
 		[Message.wMsgFlightMaximum] = nil,
 		
 		--ATC
@@ -329,6 +338,8 @@ events = {
 			[Message.wMsgATCMaximum] = nil,
 			
 			[Message.wMsgATCNAVYDepartureNull] = nil,
+				[Message.wMsgATCDepartureRadarContact] 		= { _('radar contact, altimeter 29.92.'), 'DEPARTURE-REPORT' }, --  [SIDE NUMBER],radar contact, altimeter 29.92.
+				[Message.wMsgATCDepartureClearedToSwitch]  	= { _('cleared to switch.'), 'SWITCH' },--[SIDE NUMBER], cleared to switch.
 			[Message.wMsgATCNAVYDepartureMaximum] = nil,
 			[Message.wMsgATCNAVYMarshalNull] = nil,
 				--[Message.wMsgATCMarshallCopyInbound]  = { _('Marshall copies'), 'marshall copies' },
@@ -336,8 +347,8 @@ events = {
 				[Message.wMsgATCMarshallCopyTen]  = { _('update state, switch tower'), 'SWITCH_TOWER' },
 				--)			//NAVY - CASE I : [SIDE NUMBER], marshal copies, switch tower.
 				
-				--[Message.wMsgATCMarshallCopyInbound2and3]  = { _('You are high'), 'You\�re high' },
-				--)	//NAVY - CASE II and III: [SIDE NUMBER] flight, [SHIP CALLSIGN] marshal, CASE III recovery, CV-1 approach, expected final bearing [BEARING], altimeter [PRESSURE]. [SIDE NUMBER] flight, marshal mother�s [BEARING] radial, [DISTANCE] DME, angels [ALTITUDE]. Expected approach time is [TIME], approach button is button 15. 
+				--[Message.wMsgATCMarshallCopyInbound2and3]  = { _('You are high'), 'You\’re high' },
+				--)	//NAVY - CASE II and III: [SIDE NUMBER] flight, [SHIP CALLSIGN] marshal, CASE III recovery, CV-1 approach, expected final bearing [BEARING], altimeter [PRESSURE]. [SIDE NUMBER] flight, marshal mother’s [BEARING] radial, [DISTANCE] DME, angels [ALTITUDE]. Expected approach time is [TIME], approach button is button 15. 
 				[Message.wMsgATCMarshallReadbackCorrect]  = { _('readback correct.'), 'READBACK' },
 				--)	//NAVY - CASE II and III: [SIDE NUMBER], readback correct.
 				[Message.wMsgATCMarshallRogerState]  = { _(', roger, state '), ', roger, state ' },
@@ -377,21 +388,21 @@ events = {
 				[Message.wMsgATCLSOWaveOFFWaveOFFWaveOFF]  = { _('Wave off, wave off, wave off'), 'LSO-WAVE-OFF' },
 				--)	//NAVY - Wave off, wave off, wave off.   - Not in glideslope // see text for other situations
 				[Message.wMsgATCLSOYoureHigh]  = { _('You are high'), 'LSO-HIGH' },
-				--)				//NAVY - You�re high.   - IF: Greater than 5 degrees above 3.1 glidepath, ? mile
+				--)				//NAVY - You’re high.   - IF: Greater than 5 degrees above 3.1 glidepath, ? mile
 				[Message.wMsgATCLSOYoureLow]  = { _('You are low'), 'LSO-LOW' },
-				--)				//NAVY - You�re low, POWER.   - IF: Lower than 2.7 degrees below 3.1 glidepath (below IFLOS red ball), ? mile
+				--)				//NAVY - You’re low, POWER.   - IF: Lower than 2.7 degrees below 3.1 glidepath (below IFLOS red ball), ? mile
 				[Message.wMsgATCLSOYoureGoingHigh]  = { _('You are going high'), 'LSO-GOING-HIGH' },
-				--)				//NAVY - You�re going high.   - Unless corrected, aircraft will go above optimum glide - slope.
+				--)				//NAVY - You’re going high.   - Unless corrected, aircraft will go above optimum glide - slope.
 				[Message.wMsgATCLSOYoureGoingLow]  = { _('You are going low'), 'LSO-GOING-LOW' },
-				--)				//NAVY - You�re going low, POWER.   - Unless corrected, aircraft will go below optimum glide - slope.
+				--)				//NAVY - You’re going low, POWER.   - Unless corrected, aircraft will go below optimum glide - slope.
 				[Message.wMsgATCLSOLinedUpLeft]  = { _('You are lined up left'), 'LSO-LINED-UP-LEFT' },
-				--)			//NAVY - You�re lined up left.   - IF: Aircraft center point is 1.7 degrees or greater left of centerline, Between ? to ? Mile
+				--)			//NAVY - You’re lined up left.   - IF: Aircraft center point is 1.7 degrees or greater left of centerline, Between ? to ? Mile
 				[Message.wMsgATCLSOLinedUpRight]  = { _('You are lined up right'), 'LSO-LINED-UP-RIGHT' },
-				--)			//NAVY - You�re lined up right.  - IF: Aircraft center point is 1.7 degrees or greater left of centerline, Between ? to ? Mile
+				--)			//NAVY - You’re lined up right.  - IF: Aircraft center point is 1.7 degrees or greater left of centerline, Between ? to ? Mile
 				[Message.wMsgATCLSODriftingLeft]  = { _('You drifting left'), 'LSO-DRIFTING-LEFT' },
-				--)			//NAVY - You�re Drifting left.   - Aircraft is drifting left of center - line.
+				--)			//NAVY - You’re Drifting left.   - Aircraft is drifting left of center - line.
 				[Message.wMsgATCLSODriftingRight]  = { _('You drifting right'), 'LSO-DRIFTING-RIGHT' },
-				--)			//NAVY - You�re Drifting right.   - Aircraft is drifting right of center - line.				
+				--)			//NAVY - You’re Drifting right.   - Aircraft is drifting right of center - line.				
 				[Message.wMsgATCLSOYoureFast]  = { _('You are fast'), 'LSO-FAST' },
 				--)				//NAVY - You're fast.  - IF: 7.4 or lower angle of attack.  , Between ? to ? Mile , Condition persists for 4 seconds
 				[Message.wMsgATCLSOYoureSlow]  = { _('You are slow'), 'LSO-SLOW' },
@@ -407,17 +418,17 @@ events = {
 				[Message.wMsgATCLSOPower]  = { _('Power'), 'LSO-POWER' },
 				--)					//NAVY - Power.  - IF: Aircraft center point is 1.5 degrees or greater below 3.1 degree glidepath  OR Aircraft center point within 2 degrees 3.1 degree glidepath but is descending more than 1 degree per second., Inside ? to ? Mile 
 				[Message.wMsgATCLSOPowerX2]  = { _('power, Power'), 'LSO-POWER-' },
-				--)				//NAVY - �Power� with more annoyed inflection.  - second call, Inside ? to ? Mile 
+				--)				//NAVY - “Power” with more annoyed inflection.  - second call, Inside ? to ? Mile 
 				[Message.wMsgATCLSOPowerX3]  = { _('power, Power, POWER'), 'LSO-POWER-POWER-POWER' },
-				--)				//NAVY - �power, Power, POWER� (increasing inflection).  - Aircraft center point is 2.7 degrees or greater below 3.1 degree glidepath., Inside ? to ? Mile 
+				--)				//NAVY - “power, Power, POWER” (increasing inflection).  - Aircraft center point is 2.7 degrees or greater below 3.1 degree glidepath., Inside ? to ? Mile 
 				[Message.wMsgATCLSOEasyItX2]  = { _('Easy with it, easy with it'), 'LSO-EASY' },
-				--)				//NAVY - �Easy with it" (With a sheepish inflection).  - after PowerX3 Greater than 1 degree per second change , Inside ? to ? Mile 
+				--)				//NAVY - “Easy with it" (With a sheepish inflection).  - after PowerX3 Greater than 1 degree per second change , Inside ? to ? Mile 
 				[Message.wMsgATCLSORight4LineUp]  = { _('Right for lineup'), 'LSO-RIGHT-LINEUP' },
 				--)			//NAVY - "Right for lineup".  - Aircraft center point is 1.7 degrees or greater left of centerline.Condition persists for 3 seconds , Inside ? to ? Mile 
 				[Message.wMsgATCLSOLeft4LineUp]  = { _('Come left'), 'COME_LEFT' },
 				--)			//NAVY - "Come left".  - Aircraft center point is 1.7 degrees or greater right of centerline.Condition persists for 3 seconds , Inside ? to ? Mile 
 				[Message.wMsgATCLSOFoulDeck]  = { _('Wave off, wave off, wave off, foul deck'), 'LSO-WAVE-OFF-FOUL' },
-				--)				//NAVY - �Wave off, wave off, wave off, foul deck�.  - Other aircraft on deck landing area
+				--)				//NAVY - “Wave off, wave off, wave off, foul deck”.  - Other aircraft on deck landing area
 				[Message.wMsgATCLSOBolterX3]  = { _('Bolter!Bolter!Bolter!'), 'LSO-BOLTER' },
 				
 				
@@ -557,7 +568,7 @@ events = {
 				[Message.wMsgGroundCrewNegativeUnfeasibleConfiguration] =   { _("No can do - We can't set up the aircraft this way"),                           'unable to comply' },
 			[Message.wMsgGroundCrewMaximum] = nil,
 			
-			--���
+			--ССС
 			[Message.wMsgNull] = nil,
 				[Message.wMsgCCCFollowTo] = { _('follow to'), 'follow to' },
 				[Message.wMsgCCCTasking] = { _('your mission number is'), 'your mission number is' },
@@ -614,78 +625,78 @@ events = {
 			[Message.wMsgBettyMessageEnd] = {empty_string, ''},
 			[Message.wMsgBettyGearDownSingle] = {empty_string, ''},
 			[Message.wMsgBettyCancel] = {empty_string, ''},
-			[Message.wMsgBettyTakeManualControl] = {_('Take manual control'), 'APDisengage', 'Upravlay vrutchnuiy'}, -- '�������� �������' (��-27, ��-33)
+			[Message.wMsgBettyTakeManualControl] = {_('Take manual control'), 'APDisengage', 'Upravlay vrutchnuiy'}, -- 'Управляй вручную' (Су-27, Су-33)
 		[Message.wMsgBettyMaximum] = nil,
 
 		--Ka-50 ALMAZ messages
 		[Message.wMsgALMAZ_Null] = nil,
-			[Message.wMsgALMAZ_IS_READY] = {_('Voice message system is ready'), 'IS_READY'},					--������� ���������� ��������
-			[Message.wMsgALMAZ_WATCH_EKRAN]= {_('Watch EKRAN'), 'WATCH_EKRAN'},					--������ ���
-			[Message.wMsgALMAZ_THREAT]= {_('Attack. Take care!'), 'THREAT'},						--����� ��������
-			[Message.wMsgALMAZ_CHECK_OIL_PRESS_LEFT_TRANSM]= {_('Check oil pressure left transmission'), 'CHECK_OIL_PRESS_LEFT_TRANSM'},	--������� �������� ����� ������ ���������
-			[Message.wMsgALMAZ_CHECK_OIL_PRESS_RIGHT_TRANSM]= {_('Check oil pressure right transmission'), 'CHECK_OIL_PRESS_RIGHT_TRANSM'},--������� �������� ����� ������� ���������
-			[Message.wMsgALMAZ_LEFT_ENG_FIRE]= {_('Left engine fire'), 'LEFT_ENG_FIRE'},   			--����� ������ ���������
-			[Message.wMsgALMAZ_RIGHT_ENG_FIRE]= {_('Right engine fire'), 'RIGHT_ENG_FIRE'},				--����� ������� ���������
-			[Message.wMsgALMAZ_APU_FIRE]	= {_('APU fire'), 'APU_FIRE'},				--����� ��������������� ������� ���������
-			[Message.wMsgALMAZ_HYDRO_FIRE]= {_('Hydro fire'), 'HYDRO_FIRE'},					--����� � ������ ����������
-			[Message.wMsgALMAZ_FAN_FIRE]= {_('Fan fire'), 'FAN_FIRE'},					--����� � ������ ����������
-			[Message.wMsgALMAZ_LEFT_ENG_TORQUE]= {_('Left engine torque'), 'LEFT_ENG_TORQUE'},				--��������� ������� ������ ���������
-			[Message.wMsgALMAZ_RIGHT_ENG_TORQUE]= {_('Right engine torque'), 'RIGHT_ENG_TORQUE'},			--��������� ������� ������� ���������
-			[Message.wMsgALMAZ_DANGER_ENG_VIBR]= {_('Danger engine vibration'), 'WATCH_EKRAN'},				--������ �������� ���������
-			[Message.wMsgALMAZ_DATA]= {_('Take data'), 'DATA'},                       	--������� ��
-			[Message.wMsgALMAZ_MAIN_HYDRO]= {_('Main hydro failure'), 'MAIN_HYDRO'},					--����� �������� ������������
-			[Message.wMsgALMAZ_COMMON_HYDRO]= {_('Common hydro failure'), 'COMMON_HYDRO'},    			--����� ��������������� ������������
-			[Message.wMsgALMAZ_LOWER_GEAR]= {_('Lower gear'), 'LOWER_GEAR'},					--������� �����
-			[Message.wMsgALMAZ_CHECK_MAIN_TRANSM]= {_('Check main transmission'), 'CHECK_MAIN_TRANSM'},			--������� ��������� ����� �������� ���������
-			[Message.wMsgALMAZ_TURN_ON_BACKUP_TRANSP]= {_('Turn on backup transponder code'), 'TURN_ON_BACKUP_TRANSP'},		--������ �������� ��� ���������
-			[Message.wMsgALMAZ_ELEC_ON_ACCUM]= {_('Electric on accumulator'), 'ELEC_ON_ACCUM'},				--���� �� ������������
-			[Message.wMsgALMAZ_USE_TV]= {_('Use TV'), 'USE_TV'},						--������� �� ����������
-			[Message.wMsgALMAZ_USE_MANUAL_ATTACK_KI_TV]= {_('Use manual attack KI TV'), 'USE_MANUAL_ATTACK_KI_TV'},		--������ ��������� ����������. ������� �� ����������� � ����������
-			[Message.wMsgALMAZ_FAILURE_WCS_ROCKET]= {_('WCS rocket failure'), 'FAILURE_WCS_ROCKET'},			--����� ���. ��� ���������� ����������
-			[Message.wMsgALMAZ_GUN_ACTUATOR_FAILURE]= {_('Gun actuator failure'), 'GUN_ACTUATOR_FAILURE'}, 		--����� ���
-			[Message.wMsgALMAZ_MIN_FUEL]= {_('Fuel low'), ''},					--����������� ������� �������
-			[Message.wMsgALMAZ_TURN_ON_ROTOR_ANTIICE]= {_('Turn on rotor antiice'), 'TURN_ON_ROTOR_ANTIICE'},		--�����������. ������ ��� ������.
-			[Message.wMsgALMAZ_RADIO_ALT]= {_('radio altimeter failure'), 'RADIO_ALT'},					--����� ���������������
-			[Message.wMsgALMAZ_INS]= {_('INS failure'), 'INS'},							--����� ��������������
-			[Message.wMsgALMAZ_TURN_ON_GRID_USE_FIXED_GUN]= {_('Turn on grid use fixed gun'), 'TURN_ON_GRID_USE_FIXED_GUN'},	--������ ����� �����������. ������� � ����������� ��.
-			[Message.wMsgALMAZ_TURN_ON_DC_AC_CONVERT]= {_('Turn on DC AC converter'), 'TURN_ON_DC_AC_CONVERT'},		--������ ���������������
-			[Message.wMsgALMAZ_CHECK_LEFT_TRANSM]= {_('Check left transmission'), 'CHECK_LEFT_TRANSM'},			--������� ��������� ����� ������ ���������
-			[Message.wMsgALMAZ_CHECK_RIGHT_TRANSM]= {_('Check right transmission'), 'CHECK_RIGHT_TRANSM'},			--������� ��������� ����� ������� ���������
-			[Message.wMsgALMAZ_ACTUATOR_OIL_PRESSURE]= {_('Actuator oil pressure'), 'ACTUATOR_OIL_PRESSURE'},		--���� �������� ����� ��������
-			[Message.wMsgALMAZ_FAILURE_LEFT_PROBE_HEATER]= {_('Left probe heater failure'), 'FAILURE_LEFT_PROBE_HEATER'},	--����� �������� ��� ������
-			[Message.wMsgALMAZ_FAILURE_RIGHT_PROBE_HEATER]= {_('Right probe heater failure'), 'FAILURE_RIGHT_PROBE_HEATER'},	--����� �������� ��� �������
-			[Message.wMsgALMAZ_DNS]= {_('DNS failure'), 'DNS'},     					--����� ������������� ���������� ��������
-			[Message.wMsgALMAZ_FAILURE_NAV_POSITION]= {_('Navigation position failure'), 'FAILURE_NAV_POSITION'},		--��� ��������� ���������
-			[Message.wMsgALMAZ_GENERATOR_FAILURE]= {_('Generator failure'), 'GENERATOR_FAILURE'},			--����� ����������
-			[Message.wMsgALMAZ_DC_RECTIF_FAILURE]= {_('DC rectifier failure'), 'DC_RECTIF_FAILURE'},			--����� �����������
-			[Message.wMsgALMAZ_ENG_DIGITAL_CONTROL_FAILURE]= {_('Engine digital control failure'), 'ENG_DIGITAL_CONTROL_FAILURE'},	--����� ������������ ���������� ���������
-			[Message.wMsgALMAZ_LOW_COCKPIT_PRESSURE]= {_('Low cockpit pressure'), 'LOW_COCKPIT_PRESSURE'},		--��������������� ������. ������ �� ����.
-			[Message.wMsgALMAZ_NO_HYDRO_PRESSURE]= {_('No hydro pressure'), 'NO_HYDRO_PRESSURE'},			--��� �������� ������� ������������
-			[Message.wMsgALMAZ_FAILURE_AIRCOND]= {_('Conditioning and ventilation failure'), 'FAILURE_AIRCOND'},				--����� ����������������� � ���������� � ������
-			[Message.wMsgALMAZ_FAILURE_ROTOR_ANTIICE]= {_('Rotor antiice failure'), 'FAILURE_ROTOR_ANTIICE'}, 		--����� ��� ������
-			[Message.wMsgALMAZ_NO_MOV_GUN_STOP]= { _('No move gun stop'), 'NO_MOV_GUN_STOP'},				--��� ������� ���
+			[Message.wMsgALMAZ_IS_READY] = {_('Voice message system is ready'), 'IS_READY'},					--Речевой информатор исправен
+			[Message.wMsgALMAZ_WATCH_EKRAN]= {_('Watch EKRAN'), 'WATCH_EKRAN'},					--Смотри УСТ
+			[Message.wMsgALMAZ_THREAT]= {_('Attack. Take care!'), 'THREAT'},						--Атака берегись
+			[Message.wMsgALMAZ_CHECK_OIL_PRESS_LEFT_TRANSM]= {_('Check oil pressure left transmission'), 'CHECK_OIL_PRESS_LEFT_TRANSM'},	--Проверь давление масла левого редуктора
+			[Message.wMsgALMAZ_CHECK_OIL_PRESS_RIGHT_TRANSM]= {_('Check oil pressure right transmission'), 'CHECK_OIL_PRESS_RIGHT_TRANSM'},--Проверь давление масла правого редуктора
+			[Message.wMsgALMAZ_LEFT_ENG_FIRE]= {_('Left engine fire'), 'LEFT_ENG_FIRE'},   			--Пожар левого двигателя
+			[Message.wMsgALMAZ_RIGHT_ENG_FIRE]= {_('Right engine fire'), 'RIGHT_ENG_FIRE'},				--Пожар правого двигателя
+			[Message.wMsgALMAZ_APU_FIRE]	= {_('APU fire'), 'APU_FIRE'},				--Пожар вспомогательной силовой установки
+			[Message.wMsgALMAZ_HYDRO_FIRE]= {_('Hydro fire'), 'HYDRO_FIRE'},					--Пожар в отсеке гидравлики
+			[Message.wMsgALMAZ_FAN_FIRE]= {_('Fan fire'), 'FAN_FIRE'},					--Пожар в отсеке вентиляции
+			[Message.wMsgALMAZ_LEFT_ENG_TORQUE]= {_('Left engine torque'), 'LEFT_ENG_TORQUE'},				--Раскрутка турбины левого двигателя
+			[Message.wMsgALMAZ_RIGHT_ENG_TORQUE]= {_('Right engine torque'), 'RIGHT_ENG_TORQUE'},			--Раскрутка турбины правого двигателя
+			[Message.wMsgALMAZ_DANGER_ENG_VIBR]= {_('Danger engine vibration'), 'WATCH_EKRAN'},				--Опасно вибрация двигателя
+			[Message.wMsgALMAZ_DATA]= {_('Take data'), 'DATA'},                       	--Принять ЦУ
+			[Message.wMsgALMAZ_MAIN_HYDRO]= {_('Main hydro failure'), 'MAIN_HYDRO'},					--Отказ основной гидросистемы
+			[Message.wMsgALMAZ_COMMON_HYDRO]= {_('Common hydro failure'), 'COMMON_HYDRO'},    			--Отказ вспомогательной гидросистемы
+			[Message.wMsgALMAZ_LOWER_GEAR]= {_('Lower gear'), 'LOWER_GEAR'},					--Выпусти шасси
+			[Message.wMsgALMAZ_CHECK_MAIN_TRANSM]= {_('Check main transmission'), 'CHECK_MAIN_TRANSM'},			--Проверь параметры масла главного редуктора
+			[Message.wMsgALMAZ_TURN_ON_BACKUP_TRANSP]= {_('Turn on backup transponder code'), 'TURN_ON_BACKUP_TRANSP'},		--Включи запасной код ответчика
+			[Message.wMsgALMAZ_ELEC_ON_ACCUM]= {_('Electric on accumulator'), 'ELEC_ON_ACCUM'},				--Сеть на аккумуляторе
+			[Message.wMsgALMAZ_USE_TV]= {_('Use TV'), 'USE_TV'},						--Работай по телевизору
+			[Message.wMsgALMAZ_USE_MANUAL_ATTACK_KI_TV]= {_('Use manual attack KI TV'), 'USE_MANUAL_ATTACK_KI_TV'},		--Включи резервное управление. Работай по коллиматору и телевизору
+			[Message.wMsgALMAZ_FAILURE_WCS_ROCKET]= {_('WCS rocket failure'), 'FAILURE_WCS_ROCKET'},			--Отказ СУО. Нет управления подвесками
+			[Message.wMsgALMAZ_GUN_ACTUATOR_FAILURE]= {_('Gun actuator failure'), 'GUN_ACTUATOR_FAILURE'}, 		--Отказ ППУ
+			[Message.wMsgALMAZ_MIN_FUEL]= {_('Fuel low'), ''},					--Минимальный остаток топлива
+			[Message.wMsgALMAZ_TURN_ON_ROTOR_ANTIICE]= {_('Turn on rotor antiice'), 'TURN_ON_ROTOR_ANTIICE'},		--Обледенение. Включи ПОС винтов.
+			[Message.wMsgALMAZ_RADIO_ALT]= {_('radio altimeter failure'), 'RADIO_ALT'},					--Отказ радиовысотомера
+			[Message.wMsgALMAZ_INS]= {_('INS failure'), 'INS'},							--Отказ курсовертикали
+			[Message.wMsgALMAZ_TURN_ON_GRID_USE_FIXED_GUN]= {_('Turn on grid use fixed gun'), 'TURN_ON_GRID_USE_FIXED_GUN'},	--Включи сетку коллиматора. Работай с неподвижной ПУ.
+			[Message.wMsgALMAZ_TURN_ON_DC_AC_CONVERT]= {_('Turn on DC AC converter'), 'TURN_ON_DC_AC_CONVERT'},		--Включи преобразователь
+			[Message.wMsgALMAZ_CHECK_LEFT_TRANSM]= {_('Check left transmission'), 'CHECK_LEFT_TRANSM'},			--Проверь параметры масла левого редуктора
+			[Message.wMsgALMAZ_CHECK_RIGHT_TRANSM]= {_('Check right transmission'), 'CHECK_RIGHT_TRANSM'},			--Проверь параметры масла правого редуктора
+			[Message.wMsgALMAZ_ACTUATOR_OIL_PRESSURE]= {_('Actuator oil pressure'), 'ACTUATOR_OIL_PRESSURE'},		--Мало давление масла приводов
+			[Message.wMsgALMAZ_FAILURE_LEFT_PROBE_HEATER]= {_('Left probe heater failure'), 'FAILURE_LEFT_PROBE_HEATER'},	--Отказ обогрева ПВД левого
+			[Message.wMsgALMAZ_FAILURE_RIGHT_PROBE_HEATER]= {_('Right probe heater failure'), 'FAILURE_RIGHT_PROBE_HEATER'},	--Отказ обогрева ПВД правого
+			[Message.wMsgALMAZ_DNS]= {_('DNS failure'), 'DNS'},     					--Отказ доплеровского измерителя скорости
+			[Message.wMsgALMAZ_FAILURE_NAV_POSITION]= {_('Navigation position failure'), 'FAILURE_NAV_POSITION'},		--Нет счисления координат
+			[Message.wMsgALMAZ_GENERATOR_FAILURE]= {_('Generator failure'), 'GENERATOR_FAILURE'},			--Отказ генератора
+			[Message.wMsgALMAZ_DC_RECTIF_FAILURE]= {_('DC rectifier failure'), 'DC_RECTIF_FAILURE'},			--Отказ выпрямителя
+			[Message.wMsgALMAZ_ENG_DIGITAL_CONTROL_FAILURE]= {_('Engine digital control failure'), 'ENG_DIGITAL_CONTROL_FAILURE'},	--Отказ электронного регулятора двигателя
+			[Message.wMsgALMAZ_LOW_COCKPIT_PRESSURE]= {_('Low cockpit pressure'), 'LOW_COCKPIT_PRESSURE'},		--разгерметизация кабины. Выходи из зоны.
+			[Message.wMsgALMAZ_NO_HYDRO_PRESSURE]= {_('No hydro pressure'), 'NO_HYDRO_PRESSURE'},			--Нет давления наддува гидросистемы
+			[Message.wMsgALMAZ_FAILURE_AIRCOND]= {_('Conditioning and ventilation failure'), 'FAILURE_AIRCOND'},				--Отказ кондиционирования и вентиляции в кабине
+			[Message.wMsgALMAZ_FAILURE_ROTOR_ANTIICE]= {_('Rotor antiice failure'), 'FAILURE_ROTOR_ANTIICE'}, 		--Отказ ПОС винтов
+			[Message.wMsgALMAZ_NO_MOV_GUN_STOP]= { _('No move gun stop'), 'NO_MOV_GUN_STOP'},				--Нет стопора ППУ
 		[Message.wMsgALMAZ_Maximum]= '',
 
 		--Mi8 RI65 messages
 		[Message.wMsgRI65_Null] = nil,
-			[Message.wMsgRI65_IS_READY] =						{_('RI-65 is operable'), 'device RI-65 is without fail'},	-- ������� ���������� ��������
-			[Message.wMsgRI65_LEFT_ENGINE_FIRE] =				{_('left engine fire'), 'left engine fire'},				-- ����� � ������ ������ ���������
-			[Message.wMsgRI65_RIGHT_ENGINE_FIRE] =				{_('right engine fire'), 'right engine fire'},				-- ����� � ������ ������� ���������
-			[Message.wMsgRI65_MAIN_TRANSMISSION_FIRE] =			{_('main transmission fire'), 'main transmission fire'},	-- ����� � ������ �������� ���������
-			[Message.wMsgRI65_HEATER_FIRE] =					{_('aircraft heater fire'), 'aircraft heater fire'},		-- ����� � ������ ������������
-			[Message.wMsgRI65_SWITCH_OFF_LEFT_ENGINE] =			{_('switch off left engine'), 'switch off left engine'},	-- ������� ����� ���������
-			[Message.wMsgRI65_SWITCH_OFF_RIGHT_ENGINE] =		{_('switch off right engine'), 'switch off right engine'},	-- ������� ������ ���������
-			[Message.wMsgRI65_LEFT_ENGINE_VIBRATION] =			{_('left engine vibration'), 'left engine vibration'},		-- ������� �������� ������ ���������
-			[Message.wMsgRI65_RIGHT_ENGINE_VIBRATION] =			{_('right engine vibration'), 'right engine vibration'},	-- ������� �������� ������� ���������
-			[Message.wMsgRI65_MAIN_HYDRO_FAILURE] =				{_('main hydraulics failure'), 'main hydraulics failure'},	-- �������� �������� ������������
-			[Message.wMsgRI65_EMERGENCY_FUEL] =					{_('emergency fuel'), 'emergency fuel'},					-- ��������� ������� �������
-			[Message.wMsgRI65_ICING] =							{_('icing'), 'icing'},										-- �����������
-			[Message.wMsgRI65_TRANSMISSION_MALFUNCTION] =		{_('transmission malfunction'), 'transmission malfunction'},	-- ������������� � ����������
-			[Message.wMsgRI65_GENERATOR1_FAILURE] =				{_('first generator failure'), 'first generator failure'},		-- ������� ������ ���������
-			[Message.wMsgRI65_GENERATOR2_FAILURE] =				{_('second generator failure'), 'second generator failure'},	-- ������� ������ ���������
-			[Message.wMsgRI65_PUMP_FEEDER_FUEL_TANK_FAILURE] =	{_('pump the feeder fuel tank failure'), 'pump the feeder fuel tank failure'},	-- ������� ����� ���������� ����
-			[Message.wMsgRI65_PUMPS_MAIN_FUEL_TANKS_FAILURE] =	{_('pumps the main fuel tanks failure'), 'pumps the main fuel tanks failure'},	-- �������� ������ �������� ��������� �����
-			[Message.wMsgRI65_BOARD] =		{_('board'), 'board'},	-- ����
+			[Message.wMsgRI65_IS_READY] =						{_('RI-65 is operable'), 'device RI-65 is without fail'},	-- Речевой информатор исправен
+			[Message.wMsgRI65_LEFT_ENGINE_FIRE] =				{_('left engine fire'), 'left engine fire'},				-- Пожар в отсеке левого двигателя
+			[Message.wMsgRI65_RIGHT_ENGINE_FIRE] =				{_('right engine fire'), 'right engine fire'},				-- Пожар в отсеке правого двигателя
+			[Message.wMsgRI65_MAIN_TRANSMISSION_FIRE] =			{_('main transmission fire'), 'main transmission fire'},	-- Пожар в отсеке главного редуктора
+			[Message.wMsgRI65_HEATER_FIRE] =					{_('aircraft heater fire'), 'aircraft heater fire'},		-- Пожар в отсеке обогревателя
+			[Message.wMsgRI65_SWITCH_OFF_LEFT_ENGINE] =			{_('switch off left engine'), 'switch off left engine'},	-- Выключи левый двигатель
+			[Message.wMsgRI65_SWITCH_OFF_RIGHT_ENGINE] =		{_('switch off right engine'), 'switch off right engine'},	-- Выключи правый двигатель
+			[Message.wMsgRI65_LEFT_ENGINE_VIBRATION] =			{_('left engine vibration'), 'left engine vibration'},		-- Опасная вибрация левого двигателя
+			[Message.wMsgRI65_RIGHT_ENGINE_VIBRATION] =			{_('right engine vibration'), 'right engine vibration'},	-- Опасная вибрация правого двигателя
+			[Message.wMsgRI65_MAIN_HYDRO_FAILURE] =				{_('main hydraulics failure'), 'main hydraulics failure'},	-- Отказала основная гидросистема
+			[Message.wMsgRI65_EMERGENCY_FUEL] =					{_('emergency fuel'), 'emergency fuel'},					-- Аварийный остаток топлива
+			[Message.wMsgRI65_ICING] =							{_('icing'), 'icing'},										-- Обледенение
+			[Message.wMsgRI65_TRANSMISSION_MALFUNCTION] =		{_('transmission malfunction'), 'transmission malfunction'},	-- Неисправность в редукторах
+			[Message.wMsgRI65_GENERATOR1_FAILURE] =				{_('first generator failure'), 'first generator failure'},		-- Отказал первый генератор
+			[Message.wMsgRI65_GENERATOR2_FAILURE] =				{_('second generator failure'), 'second generator failure'},	-- Отказал второй генератор
+			[Message.wMsgRI65_PUMP_FEEDER_FUEL_TANK_FAILURE] =	{_('pump the feeder fuel tank failure'), 'pump the feeder fuel tank failure'},	-- Отказал насос расходного бака
+			[Message.wMsgRI65_PUMPS_MAIN_FUEL_TANKS_FAILURE] =	{_('pumps the main fuel tanks failure'), 'pumps the main fuel tanks failure'},	-- Отказали насосы основных топливных баков
+			[Message.wMsgRI65_BOARD] =		{_('board'), 'board'},	-- борт
 			[Message.wMsgRI65_0_BEGIN] =	{_('0'), '0-begin'},	-- 0
 			[Message.wMsgRI65_0_END] =		{_('0'), '0-end'},		-- 0
 			[Message.wMsgRI65_1_BEGIN] =	{_('1'), '1-begin'},	-- 1
@@ -709,8 +720,8 @@ events = {
 		[Message.wMsgRI65_Maximum]= '',
 
 		[Message.wMsgAutopilotAdjustment_Null] = nil,
-			[Message.wMsgAutopilotAdjustment_AdjustingPitchChannel] =	{_('adjusting pitch channel'), 'adjusting pitch channel'},	-- ����������� ������
-			[Message.wMsgAutopilotAdjustment_AdjustingRollChannel] =	{_('adjusting roll channel'), 'adjusting roll channel'},	-- ����������� ����
+			[Message.wMsgAutopilotAdjustment_AdjustingPitchChannel] =	{_('adjusting pitch channel'), 'adjusting pitch channel'},	-- подстраиваю тангаж
+			[Message.wMsgAutopilotAdjustment_AdjustingRollChannel] =	{_('adjusting roll channel'), 'adjusting roll channel'},	-- подстраиваю крен
 		[Message.wMsgAutopilotAdjustment_Maximum]= '',
 		
 		--External Cargo: flight engineer
